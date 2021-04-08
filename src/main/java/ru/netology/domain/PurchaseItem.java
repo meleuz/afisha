@@ -2,7 +2,6 @@ package ru.netology.domain;
 
 import lombok.*;
 
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class PurchaseItem {

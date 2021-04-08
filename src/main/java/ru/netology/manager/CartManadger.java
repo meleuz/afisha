@@ -4,6 +4,13 @@ import ru.netology.domain.PurchaseItem;
 
 class CartManager {
     private PurchaseItem[] items = new PurchaseItem[0];
+    private int itemsNumber;
+
+    public CartManager(int itemsNumber) {
+        this.itemsNumber = itemsNumber;
+    }
+
+    //Add new item
 
     public void add(PurchaseItem item) {
         int length = items.length + 1;
@@ -14,7 +21,9 @@ class CartManager {
         items = tmp;
     }
 
-    public PurchaseItem[] getAll() {
+    //Get all the items from the last
+    public PurchaseItem[] getLast() {
+        int number = Math.min(itemsNumber, items.length);
         PurchaseItem[] result = new PurchaseItem[items.length];
         for (int i = 0; i < result.length; i++) {
             int index = items.length - i - 1;
@@ -23,16 +32,4 @@ class CartManager {
         return result;
     }
 
-    public void removeById(int id) {
-        int length = items.length - 1;
-        PurchaseItem[] tmp = new PurchaseItem[length];
-        int index = 0;
-        for (PurchaseItem item : items) {
-            if (item.getId() != id) {
-                tmp[index] = item;
-                index++;
-            }
-        }
-        items = tmp;
-    }
 }
